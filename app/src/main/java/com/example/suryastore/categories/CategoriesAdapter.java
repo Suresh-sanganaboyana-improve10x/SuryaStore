@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.suryastore.OnItemActionListener;
 import com.example.suryastore.databinding.CategoriesItemBinding;
 
 import java.util.ArrayList;
@@ -14,9 +15,13 @@ import java.util.List;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
     public List<String> categories;
+    public OnItemActionListener onItemActionListener;
     void setCategoriesData(List<String> categories) {
         this.categories = categories;
         notifyDataSetChanged();
+    }
+    void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
     }
 
     @NonNull
@@ -31,6 +36,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
         String category = categories.get(position);
         holder.binding.categoriesTxt.setText(category);
+        holder.binding.getRoot().setOnClickListener(v -> {
+            onItemActionListener.onClick(category);
+        });
     }
 
     @Override

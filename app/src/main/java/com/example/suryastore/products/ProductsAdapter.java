@@ -34,6 +34,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
     public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position) {
         Product product = products.get(position);
         holder.binding.setProduct(product);
+        holder.binding.productsRatingBar.setRating(product.rating.getRate());
     }
 
     @Override
