@@ -16,10 +16,15 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
 
     public List<Product> products;
+    private OnItemActionListener onItemActionListener;
 
     void setProductsData(List<Product> products) {
         this.products = products;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
     }
 
     @NonNull
@@ -35,6 +40,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
         Product product = products.get(position);
         holder.binding.setProduct(product);
         holder.binding.productsRatingBar.setRating(product.rating.getRate());
+        holder.binding.getRoot().setOnClickListener(v -> {
+            onItemActionListener.onClicked(product.getId());
+        });
+
     }
 
     @Override

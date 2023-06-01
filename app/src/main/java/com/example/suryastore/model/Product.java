@@ -9,6 +9,7 @@ public class Product {
     private String category;
     @SerializedName("image")
     private String imageUrl;
+    public String description;
     public Rating rating;
 
     public Integer getId() {

@@ -10,6 +10,7 @@ import com.example.suryastore.BaseActivity;
 import com.example.suryastore.R;
 import com.example.suryastore.databinding.ActivityProductsBinding;
 import com.example.suryastore.model.Product;
+import com.example.suryastore.productdetails.ProductDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +62,14 @@ public class ProductsActivity extends BaseActivity {
     public void setProductsAdapter() {
         productsAdapter = new ProductsAdapter();
         productsAdapter.setProductsData(products);
+        productsAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onClicked(int productsId) {
+                Intent intent = new Intent(getApplicationContext(), ProductDetailsActivity.class);
+                intent.putExtra("ProductDetails", productsId);
+                startActivity(intent);
+            }
+        });
     }
 
     public void setProductsRv() {

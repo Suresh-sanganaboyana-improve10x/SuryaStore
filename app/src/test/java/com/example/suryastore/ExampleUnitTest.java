@@ -45,4 +45,13 @@ public class ExampleUnitTest {
         assertFalse(products.isEmpty());
         System.out.println(new Gson().toJson(products));
     }
+
+    @Test
+    public void apiProductDetails() throws IOException {
+        FakeApiService fakeApiService = new FakeApi().createFakeApiService();
+        Call<Product> call = fakeApiService.getProductDetails(1);
+        Product products = call.execute().body();
+        assertNotNull(products);
+        System.out.println(new Gson().toJson(products));
+    }
 }
