@@ -14,12 +14,15 @@ import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
+    // TODO : private, private
     public List<String> categories;
     public OnItemActionListener onItemActionListener;
+
     void setCategoriesData(List<String> categories) {
         this.categories = categories;
         notifyDataSetChanged();
     }
+
     void setOnItemActionListener(OnItemActionListener onItemActionListener) {
         this.onItemActionListener = onItemActionListener;
     }

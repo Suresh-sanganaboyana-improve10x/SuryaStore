@@ -25,6 +25,7 @@ import retrofit2.Response;
 
 public class CategoriesActivity extends BaseActivity {
 
+    //TODO : private, private, private
     public ActivityCategoriesBinding binding;
     public ArrayList<String> categories = new ArrayList<>();
     public CategoriesAdapter categoriesAdapter;
@@ -36,17 +37,19 @@ public class CategoriesActivity extends BaseActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Categories");
         fetchCategories();
-        setCategoriesAdapter();
-        setCategoriesRv();
+        setCategoriesAdapter(); // TODO : setup
+        setCategoriesRv(); // TODO : setup
     }
 
     public void fetchCategories() {
+        // TODO : handle progress bar
         Call<List<String>> call = fakeApiService.getCategories();
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
                 List<String> categoryList = response.body();
                 categoriesAdapter.setCategoriesData(categoryList);
+                // TODO : this is only for testing purpose
                 showToast("Successfully fetch categories");
             }
 
@@ -63,7 +66,7 @@ public class CategoriesActivity extends BaseActivity {
         categoriesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onClick(String categoryName) {
-                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
+                Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
                 intent.putExtra("category", categoryName);
                 startActivity(intent);
             }

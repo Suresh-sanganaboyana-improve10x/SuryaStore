@@ -34,11 +34,13 @@ public class ProductsActivity extends BaseActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Products");
         Intent intent = getIntent();
-        intent.hasExtra("category");
-        categoryName = getIntent().getStringExtra("category");
+        // TODO : explore more about hasExtra, putExtra and getExtra method
+        if(intent.hasExtra("category")) {
+            categoryName = getIntent().getStringExtra("category");
+        }
         fetchProducts();
-        setProductsAdapter();
-        setProductsRv();
+        setProductsAdapter(); // TODO : setup
+        setProductsRv(); // TODO : setup
     }
 
     public void fetchProducts() {
@@ -65,7 +67,9 @@ public class ProductsActivity extends BaseActivity {
         productsAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onClicked(int productsId) {
-                Intent intent = new Intent(getApplicationContext(), ProductDetailsActivity.class);
+                Intent intent = new Intent(ProductsActivity.this, ProductDetailsActivity.class);
+                // TODO : key should "productId"
+                // TODO : Constants
                 intent.putExtra("ProductDetails", productsId);
                 startActivity(intent);
             }

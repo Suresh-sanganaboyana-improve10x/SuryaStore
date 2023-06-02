@@ -1,7 +1,5 @@
 package com.example.suryastore.productdetails;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,6 +14,7 @@ import retrofit2.Response;
 
 public class ProductDetailsActivity extends BaseActivity {
 
+    // TODO : private, private
     public ActivityProductDetailsBinding binding;
     int productId;
 
@@ -25,6 +24,7 @@ public class ProductDetailsActivity extends BaseActivity {
         binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent = getIntent();
+        // TODO : fix it
         intent.hasExtra("ProductDetails");
         productId = getIntent().getIntExtra("ProductDetails", 0);
         fetchProductDetails();
@@ -35,8 +35,10 @@ public class ProductDetailsActivity extends BaseActivity {
         call.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
+                // TODO : product
                 Product products = response.body();
                 binding.setProduct(products);
+                // TODO :  Use data binding
                 binding.productRatingBar.setRating(products.rating.getRate());
                 showToast("Successfully get product");
 

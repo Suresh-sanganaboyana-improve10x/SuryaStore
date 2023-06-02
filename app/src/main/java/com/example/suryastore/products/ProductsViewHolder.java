@@ -9,9 +9,10 @@ import com.example.suryastore.databinding.ProductsItemBinding;
 
 public class ProductsViewHolder extends RecyclerView.ViewHolder {
 
+    // TODO : use default
     public ProductsItemBinding binding;
 
-    public ProductsViewHolder(ProductsItemBinding productsItemBinding  ) {
+    public ProductsViewHolder(ProductsItemBinding productsItemBinding) {
         super(productsItemBinding.getRoot());
         binding = productsItemBinding;
     }

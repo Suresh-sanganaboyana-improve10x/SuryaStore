@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
 
+    // TODO : private
     public List<Product> products;
     private OnItemActionListener onItemActionListener;
 
@@ -23,6 +24,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
         notifyDataSetChanged();
     }
 
+    // TODO : you can use default
     public void setOnItemActionListener(OnItemActionListener onItemActionListener) {
         this.onItemActionListener = onItemActionListener;
     }
@@ -30,7 +32,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
     @NonNull
     @Override
     public ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // TODO : xml should be product_item
         ProductsItemBinding binding = ProductsItemBinding.inflate(LayoutInflater.from(parent.getContext()),parent, false);
+        // TODO : ProductViewHolder, change object as well
         ProductsViewHolder productsViewHolder = new ProductsViewHolder(binding);
         return productsViewHolder;
     }
@@ -39,7 +43,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
     public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position) {
         Product product = products.get(position);
         holder.binding.setProduct(product);
-        holder.binding.productsRatingBar.setRating(product.rating.getRate());
         holder.binding.getRoot().setOnClickListener(v -> {
             onItemActionListener.onClicked(product.getId());
         });

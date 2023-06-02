@@ -16,14 +16,17 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TODO : first time only methods can use "setup"
         setFakeApiService();
     }
 
+    // private
     protected void setFakeApiService() {
         FakeApi fakeApi = new FakeApi();
         fakeApiService = fakeApi.createFakeApiService();
     }
 
+    // TODO : protected
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

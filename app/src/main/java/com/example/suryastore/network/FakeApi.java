@@ -7,7 +7,7 @@ public class FakeApi {
 
     public FakeApiService createFakeApiService() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://fakestoreapi.com/")
+                .baseUrl("https://fakestoreapi.com/") // TODO: Constants
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         FakeApiService fakeApiService = retrofit.create(FakeApiService.class);
