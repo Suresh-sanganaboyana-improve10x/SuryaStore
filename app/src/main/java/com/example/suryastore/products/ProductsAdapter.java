@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.suryastore.databinding.ProductsItemBinding;
 import com.example.suryastore.model.Product;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
@@ -44,7 +42,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
         Product product = products.get(position);
         holder.binding.setProduct(product);
         holder.binding.getRoot().setOnClickListener(v -> {
-            onItemActionListener.onClicked(product.getId());
+            onItemActionListener.onClick(product.getId());
         });
 
     }

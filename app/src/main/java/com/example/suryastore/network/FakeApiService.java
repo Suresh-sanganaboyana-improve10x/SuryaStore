@@ -1,5 +1,6 @@
 package com.example.suryastore.network;
 
+import com.example.suryastore.Constants;
 import com.example.suryastore.model.Product;
 
 import java.util.List;
@@ -10,13 +11,12 @@ import retrofit2.http.Path;
 
 public interface FakeApiService {
 
-    @GET("products/categories")
+    @GET(Constants.CATEGORIES_END_POINT)
     Call<List<String>> getCategories();
 
-    @GET("products/category/{categoryName}")
+    @GET(Constants.PRODUCTS_END_POINT+ "{categoryName}")
     Call<List<Product>> getProducts(@Path("categoryName") String categoryName);
 
-    @GET("products/{productId}")
+    @GET(Constants.PRODUCT_DETAILS_END_POINT+ "{productId}")
     Call<Product> getProductDetails(@Path("productId") int productId);
-
 }

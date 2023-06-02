@@ -1,7 +1,5 @@
-package com.example.suryastore;
+package com.example.suryastore.categories;
 
-//  TODO : move it to categories package
 public interface OnItemActionListener {
-
     void onClick(String categoryName);
 }

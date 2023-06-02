@@ -10,7 +10,7 @@ import com.example.suryastore.databinding.CategoriesItemBinding;
 public class CategoriesViewHolder extends RecyclerView.ViewHolder {
 
     // TODO : use default
-    public CategoriesItemBinding binding;
+    CategoriesItemBinding binding;
 
     public CategoriesViewHolder(CategoriesItemBinding categoriesItemBinding) {
         super(categoriesItemBinding.getRoot());

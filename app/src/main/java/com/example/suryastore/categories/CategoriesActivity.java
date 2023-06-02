@@ -1,19 +1,14 @@
 package com.example.suryastore.categories;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.widget.CursorTreeAdapter;
+import android.view.View;
 
 import com.example.suryastore.BaseActivity;
-import com.example.suryastore.OnItemActionListener;
-import com.example.suryastore.R;
+import com.example.suryastore.Constants;
 import com.example.suryastore.databinding.ActivityCategoriesBinding;
-import com.example.suryastore.network.FakeApi;
-import com.example.suryastore.network.FakeApiService;
 import com.example.suryastore.products.ProductsActivity;
 
 import java.util.ArrayList;
@@ -25,10 +20,9 @@ import retrofit2.Response;
 
 public class CategoriesActivity extends BaseActivity {
 
-    //TODO : private, private, private
-    public ActivityCategoriesBinding binding;
-    public ArrayList<String> categories = new ArrayList<>();
-    public CategoriesAdapter categoriesAdapter;
+    private ActivityCategoriesBinding binding;
+    private ArrayList<String> categories = new ArrayList<>();
+    private CategoriesAdapter categoriesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,45 +31,48 @@ public class CategoriesActivity extends BaseActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Categories");
         fetchCategories();
-        setCategoriesAdapter(); // TODO : setup
-        setCategoriesRv(); // TODO : setup
+        setupCategoriesAdapter();
+        setupCategoriesRv();
     }
 
     public void fetchCategories() {
-        // TODO : handle progress bar
+        setupProgressBarVisible();
         Call<List<String>> call = fakeApiService.getCategories();
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                setupProgressBarGone();
                 List<String> categoryList = response.body();
                 categoriesAdapter.setCategoriesData(categoryList);
-                // TODO : this is only for testing purpose
-                showToast("Successfully fetch categories");
             }
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
+                setupProgressBarGone();
                 showToast("Failed to fetch categories");
             }
         });
     }
 
-    public void setCategoriesAdapter() {
+    public void setupCategoriesAdapter() {
         categoriesAdapter = new CategoriesAdapter();
         categoriesAdapter.setCategoriesData(categories);
-        categoriesAdapter.setOnItemActionListener(new OnItemActionListener() {
-            @Override
-            public void onClick(String categoryName) {
-                Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
-                intent.putExtra("category", categoryName);
-                startActivity(intent);
-            }
+        categoriesAdapter.setOnItemActionListener(categoryName -> {
+            Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
+            intent.putExtra(Constants.KEY_CATEGORY, categoryName);
+            startActivity(intent);
         });
     }
-
-    public void setCategoriesRv() {
+    public void setupCategoriesRv() {
         binding.categoriesRv.setLayoutManager(new LinearLayoutManager(this));
         binding.categoriesRv.setAdapter(categoriesAdapter);
     }
 
+    private void setupProgressBarVisible() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void setupProgressBarGone() {
+        binding.progressBar.setVisibility(View.GONE);
+    }
 }

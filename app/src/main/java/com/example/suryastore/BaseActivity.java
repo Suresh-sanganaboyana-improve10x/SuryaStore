@@ -10,18 +10,16 @@ import com.example.suryastore.network.FakeApi;
 import com.example.suryastore.network.FakeApiService;
 
 public class BaseActivity extends AppCompatActivity {
-
     protected FakeApiService fakeApiService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO : first time only methods can use "setup"
-        setFakeApiService();
+        setupFakeApiService();
     }
 
     // private
-    protected void setFakeApiService() {
+    protected void setupFakeApiService() {
         FakeApi fakeApi = new FakeApi();
         fakeApiService = fakeApi.createFakeApiService();
     }

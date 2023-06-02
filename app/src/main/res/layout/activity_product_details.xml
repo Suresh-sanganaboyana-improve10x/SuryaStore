@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="8dp"
             tools:context=".productdetails.ProductDetailsActivity">
 
@@ -47,6 +47,7 @@
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:rating="@{product.rating.rate}"
                 app:layout_constraintStart_toStartOf="@+id/product_title_txt"
                 app:layout_constraintTop_toBottomOf="@+id/product_title_txt" />
 
@@ -57,7 +58,8 @@
                 android:text="@{String.valueOf(product.rating.count)}"
                 app:layout_constraintBottom_toBottomOf="@+id/product_rating_bar"
                 app:layout_constraintStart_toEndOf="@+id/product_rating_bar"
-                app:layout_constraintTop_toTopOf="@+id/product_rating_bar" />
+                app:layout_constraintTop_toTopOf="@+id/product_rating_bar"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/product_price_txt"
@@ -65,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{'₹' + String.valueOf(product.price)}"
                 app:layout_constraintStart_toStartOf="@+id/product_rating_bar"
-                app:layout_constraintTop_toBottomOf="@+id/product_rating_bar" />
+                app:layout_constraintTop_toBottomOf="@+id/product_rating_bar"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/product_discription_txt"
@@ -73,7 +76,18 @@
                 android:layout_height="wrap_content"
                 android:text="@{product.description}"
                 app:layout_constraintStart_toStartOf="@+id/product_price_txt"
-                app:layout_constraintTop_toBottomOf="@+id/product_price_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/product_price_txt"
+                tools:text="TextView" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
