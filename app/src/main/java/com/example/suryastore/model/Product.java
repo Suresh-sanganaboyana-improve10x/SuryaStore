@@ -1,16 +1,36 @@
 package com.example.suryastore.model;
 
+import com.example.suryastore.apichangeclasses.Category;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 public class Product {
     private Integer id;
     private String title;
     private Float price;
-    private String category;
-    @SerializedName("image")
-    private String imageUrl;
-    public String description;
-    public Rating rating;
+    private ArrayList<String> images;
+    private Category category;
+
+    public ArrayList<String> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<String> images) {
+        this.images = images;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+//    private String category;
+
+   /* public String description;
+    public Rating rating;*/
 
     public Integer getId() {
         return id;
@@ -36,7 +56,7 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategory() {
+ /*   public String getCategory() {
         return category;
     }
 
@@ -58,5 +78,5 @@ public class Product {
 
     public void setRating(Rating rating) {
         this.rating = rating;
-    }
+    }*/
 }

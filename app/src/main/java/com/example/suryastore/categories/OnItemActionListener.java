@@ -1,5 +1,5 @@
 package com.example.suryastore.categories;
 
 public interface OnItemActionListener {
-    void onClick(String categoryName);
+    void onClick(int categoryId);
 }

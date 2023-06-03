@@ -11,14 +11,15 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface FakeApiService {
 
     @GET(Constants.CATEGORIES_END_POINT)
     Call<List<Category>> getCategories();
 
-    @GET(Constants.PRODUCTS_END_POINT+ "{categoryName}")
-    Call<List<Product>> getProducts(@Path("categoryName") String categoryName);
+    @GET("products")
+    Call<List<Product>> getProducts(@Query("categoryId") int categoryId);
 
     @GET(Constants.PRODUCT_DETAILS_END_POINT+ "{productId}")
     Call<Product> getProductDetails(@Path("productId") int productId);
