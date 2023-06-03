@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintVertical_bias="0.607" />
 
     <ImageButton
         android:id="@+id/quantity_increase_img_btn"
@@ -52,5 +52,20 @@
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/product_id_txt"
         app:layout_constraintTop_toTopOf="@+id/quantity_decrease_img_btn" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:text="Button"
+        android:textColor="#EF0606"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/quantity_decrease_img_btn"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/product_id_txt"
+        tools:layout_editor_absoluteY="22dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
