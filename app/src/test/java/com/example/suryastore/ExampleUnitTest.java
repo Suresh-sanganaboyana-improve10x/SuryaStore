@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import com.example.suryastore.apichangeclasses.Category;
 import com.example.suryastore.model.Cart;
 import com.example.suryastore.model.CartProduct;
 import com.example.suryastore.model.Product;
@@ -30,8 +31,8 @@ public class ExampleUnitTest {
     @Test
     public void apiCategoriesTest() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createFakeApiService();
-        Call<List<String>> call = fakeApiService.getCategories();
-        List<String> category = call.execute().body();
+        Call<List<Category>> call = fakeApiService.getCategories();
+        List<Category> category = call.execute().body();
         assertNotNull(category);
         assertFalse(category.isEmpty());
         System.out.println(new Gson().toJson(category));

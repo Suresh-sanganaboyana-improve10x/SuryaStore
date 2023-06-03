@@ -12,6 +12,7 @@ import android.view.View;
 import com.example.suryastore.BaseActivity;
 import com.example.suryastore.Constants;
 import com.example.suryastore.R;
+import com.example.suryastore.apichangeclasses.Category;
 import com.example.suryastore.carts.CartActivity;
 import com.example.suryastore.databinding.ActivityCategoriesBinding;
 import com.example.suryastore.products.ProductsActivity;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 public class CategoriesActivity extends BaseActivity {
 
     private ActivityCategoriesBinding binding;
-    private ArrayList<String> categories = new ArrayList<>();
+    private ArrayList<Category> categories = new ArrayList<>();
     private CategoriesAdapter categoriesAdapter;
 
     @Override
@@ -59,17 +60,18 @@ public class CategoriesActivity extends BaseActivity {
 
     public void fetchCategories() {
         setupProgressBarVisible();
-        Call<List<String>> call = fakeApiService.getCategories();
-        call.enqueue(new Callback<List<String>>() {
+        Call<List<Category>> call = fakeApiService.getCategories();
+        call.enqueue(new Callback<List<Category>>() {
             @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 setupProgressBarGone();
-                List<String> categoryList = response.body();
-                categoriesAdapter.setCategoriesData(categoryList);
+                List<Category> categories1 = response.body();
+                categoriesAdapter.setCategoriesData(categories1);
+                showToast("Successfully fetch categories");
             }
 
             @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
+            public void onFailure(Call<List<Category>> call, Throwable t) {
                 setupProgressBarGone();
                 showToast("Failed to fetch categories");
             }

@@ -1,6 +1,7 @@
 package com.example.suryastore.network;
 
 import com.example.suryastore.Constants;
+import com.example.suryastore.apichangeclasses.Category;
 import com.example.suryastore.model.Cart;
 import com.example.suryastore.model.CartProduct;
 import com.example.suryastore.model.Product;
@@ -14,7 +15,7 @@ import retrofit2.http.Path;
 public interface FakeApiService {
 
     @GET(Constants.CATEGORIES_END_POINT)
-    Call<List<String>> getCategories();
+    Call<List<Category>> getCategories();
 
     @GET(Constants.PRODUCTS_END_POINT+ "{categoryName}")
     Call<List<Product>> getProducts(@Path("categoryName") String categoryName);
