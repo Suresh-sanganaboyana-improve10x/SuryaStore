@@ -1,6 +1,8 @@
 package com.example.suryastore.network;
 
 import com.example.suryastore.Constants;
+import com.example.suryastore.model.Cart;
+import com.example.suryastore.model.CartProduct;
 import com.example.suryastore.model.Product;
 
 import java.util.List;
@@ -19,4 +21,7 @@ public interface FakeApiService {
 
     @GET(Constants.PRODUCT_DETAILS_END_POINT+ "{productId}")
     Call<Product> getProductDetails(@Path("productId") int productId);
+
+    @GET("carts/1?userId=1")
+    Call<Cart> getCartProducts();
 }

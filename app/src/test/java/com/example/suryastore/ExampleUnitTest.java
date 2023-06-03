@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import com.example.suryastore.model.Cart;
+import com.example.suryastore.model.CartProduct;
 import com.example.suryastore.model.Product;
 import com.example.suryastore.network.FakeApi;
 import com.example.suryastore.network.FakeApiService;
@@ -53,5 +55,13 @@ public class ExampleUnitTest {
         Product products = call.execute().body();
         assertNotNull(products);
         System.out.println(new Gson().toJson(products));
+    }
+
+    @Test
+    public void apiCart() throws IOException {
+        FakeApiService fakeApiService = new FakeApi().createFakeApiService();
+        Call<Cart> call = fakeApiService.getCartProducts();
+        Cart cart = call.execute().body();
+        System.out.println(cart);
     }
 }

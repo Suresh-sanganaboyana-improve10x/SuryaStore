@@ -1,19 +1,25 @@
 package com.example.suryastore.products;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.suryastore.BaseActivity;
 import com.example.suryastore.Constants;
+import com.example.suryastore.R;
+import com.example.suryastore.carts.CartActivity;
 import com.example.suryastore.databinding.ActivityProductsBinding;
 import com.example.suryastore.model.Product;
 import com.example.suryastore.productdetails.ProductDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +46,23 @@ public class ProductsActivity extends BaseActivity {
         fetchProducts();
         setupProductsAdapter(); // TODO : setup
         setupProductsRv(); // TODO : setup
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cart_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.cart_icon) {
+            Intent intent = new Intent(this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     public void fetchProducts() {
