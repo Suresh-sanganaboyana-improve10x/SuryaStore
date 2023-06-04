@@ -9,8 +9,17 @@ public class Product {
     private Integer id;
     private String title;
     private Float price;
+    private String description;
     private ArrayList<String> images;
     private Category category;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public ArrayList<String> getImages() {
         return images;

@@ -70,14 +70,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/product_title_txt"
                 tools:text="TextView" />
 
-          <!--  <TextView
+            <TextView
                 android:id="@+id/product_discription_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{product.description}"
                 app:layout_constraintStart_toStartOf="@+id/product_price_txt"
                 app:layout_constraintTop_toBottomOf="@+id/product_price_txt"
-                tools:text="TextView" />-->
+                tools:text="TextView" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"

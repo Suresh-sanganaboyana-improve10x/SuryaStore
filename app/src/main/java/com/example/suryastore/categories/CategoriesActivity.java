@@ -81,10 +81,13 @@ public class CategoriesActivity extends BaseActivity {
     public void setupCategoriesAdapter() {
         categoriesAdapter = new CategoriesAdapter();
         categoriesAdapter.setCategoriesData(categories);
-        categoriesAdapter.setOnItemActionListener(categoryName -> {
-            Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
-            intent.putExtra(Constants.KEY_CATEGORY, categoryName);
-            startActivity(intent);
+        categoriesAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onClick(int categoryId) {
+                Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
+                intent.putExtra(Constants.KEY_CATEGORY, categoryId);
+                startActivity(intent);
+            }
         });
     }
     public void setupCategoriesRv() {

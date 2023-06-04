@@ -30,7 +30,8 @@ public class ProductsActivity extends BaseActivity {
     private ArrayList<Product> products = new ArrayList<>();
     private ActivityProductsBinding binding;
     private ProductsAdapter productsAdapter;
-    private String categoryName;
+//    private String categoryName;
+    private int categoryId;
 
 
     @Override
@@ -41,7 +42,7 @@ public class ProductsActivity extends BaseActivity {
         getSupportActionBar().setTitle("Products");
         // TODO : explore more about hasExtra, putExtra and getExtra method
         if(getIntent().hasExtra(Constants.KEY_CATEGORY)) {
-            categoryName = getIntent().getStringExtra(Constants.KEY_CATEGORY);
+            categoryId = getIntent().getIntExtra(Constants.KEY_CATEGORY, categoryId);
         }
         fetchProducts();
         setupProductsAdapter(); // TODO : setup
@@ -67,7 +68,7 @@ public class ProductsActivity extends BaseActivity {
 
     public void fetchProducts() {
         setupProgressBarVisible();
-        Call<List<Product>> call = fakeApiService.getProducts(1);
+        Call<List<Product>> call = fakeApiService.getProducts(categoryId);
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
