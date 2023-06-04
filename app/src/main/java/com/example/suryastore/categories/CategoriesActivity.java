@@ -16,6 +16,7 @@ import com.example.suryastore.apichangeclasses.Category;
 import com.example.suryastore.carts.CartActivity;
 import com.example.suryastore.databinding.ActivityCategoriesBinding;
 import com.example.suryastore.products.ProductsActivity;
+import com.example.suryastore.searchbar.SearchProductsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +54,12 @@ public class CategoriesActivity extends BaseActivity {
             Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
             return true;
-        } else {
-            return super.onOptionsItemSelected(item);
+        } else if (item.getItemId() == R.id.search_icon_menu){
+            Intent intent = new Intent(this, SearchProductsActivity.class);
+            startActivity(intent);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public void fetchCategories() {
