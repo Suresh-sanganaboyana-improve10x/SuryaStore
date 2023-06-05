@@ -16,6 +16,7 @@ import com.example.suryastore.carts.CartActivity;
 import com.example.suryastore.databinding.ActivityProductsBinding;
 import com.example.suryastore.model.Product;
 import com.example.suryastore.productdetails.ProductDetailsActivity;
+import com.example.suryastore.searchbar.SearchProductsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,9 +62,11 @@ public class ProductsActivity extends BaseActivity {
             Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
             return true;
-        } else {
-            return super.onOptionsItemSelected(item);
+        } else if (item.getItemId() == R.id.search_icon_menu){
+            Intent intent = new Intent(this, SearchProductsActivity.class);
+            startActivity(intent);
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public void fetchProducts() {

@@ -65,4 +65,13 @@ public class ExampleUnitTest {
         Cart cart = call.execute().body();
         System.out.println(cart);
     }
+
+    @Test
+    public void apiSearchProducts() throws IOException {
+        FakeApiService fakeApiService = new FakeApi().createFakeApiService();
+        Call<List<Product>> call = fakeApiService.getProductsOnSearch("");
+        List<Product> products = call.execute().body();
+        assertNotNull(products);
+        System.out.println(new Gson().toJson(products));
+    }
 }

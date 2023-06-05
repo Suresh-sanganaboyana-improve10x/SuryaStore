@@ -1,5 +1,6 @@
 package com.example.suryastore.productdetails;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +40,8 @@ public class ProductDetailsActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.cart_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.search_icon_menu);
+        menuItem.setVisible(false);
         return true;
     }
 
